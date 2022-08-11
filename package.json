@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "js-audio-recorder": "^1.0.7",
+    "lamejs": "^1.2.1",
+    "vant": "^2.12.47",
+    "vue-router": "3.0"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.5",
+    "less": "^4.1.2",
+    "less-loader": "^7.3.0"
+  }
+}
