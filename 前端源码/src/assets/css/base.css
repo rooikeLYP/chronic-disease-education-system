@@ -1,0 +1,15 @@
+@import './normalize.css';
+
+:root {
+    --color-text: white;
+    --color-high-text: #ff5777;
+    --color-tint: #ff8198;
+    --color-bacground: #fff;
+    --font-size: 14px;
+    --line-height: 1.5;
+}
+
+body {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
