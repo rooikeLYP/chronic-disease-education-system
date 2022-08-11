@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.UserQuestionDao">
+
+    <resultMap type="com.lyp.demo.entity.UserQuestion" id="UserQuestionMap">
+        <result property="问卷编号" column="问卷编号" jdbcType="INTEGER"/>
+        <result property="用户账号" column="用户账号" jdbcType="VARCHAR"/>
+        <result property="是否提交" column="是否提交" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllUserQ" resultType="com.lyp.demo.entity.UserQuestion">
+        select * from userquestion where 用户账号=#{account}
+    </select>
+
+    <update id="updateUserQ">
+        update userquestion set 是否提交=#{status} where 问卷编号=#{qNum} and 用户账号=#{account}
+    </update>
+
+    <insert id="addUserQ">
+        insert into userquestion values(#{qNum}, #{account}, '否')
+    </insert>
+</mapper>
+

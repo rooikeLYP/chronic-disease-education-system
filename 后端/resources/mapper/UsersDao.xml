@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.UsersDao">
+
+    <resultMap type="com.lyp.demo.entity.Users" id="UsersMap">
+        <result property="账号" column="账号" jdbcType="VARCHAR"/>
+        <result property="密码" column="密码" jdbcType="VARCHAR"/>
+        <result property="头像" column="头像" jdbcType="VARCHAR"/>
+        <result property="昵称" column="昵称" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPassWord" resultType="com.lyp.demo.entity.Users">
+        select * from users where 账号 = #{account}
+    </select>
+
+    <update id="changePwd">
+        update users set 密码 = #{newPwd} where 账号 = #{account}
+    </update>
+
+    <update id="changeName">
+        update users set 昵称 = #{name} where 账号 = #{account}
+    </update>
+    <update id="changePic">
+        update users set 头像 = #{picture} where 账号 = #{account}
+    </update>
+    <insert id="addUser">
+        insert into users(账号,密码,昵称) values (#{account}, #{pwd}, #{name})
+    </insert>
+
+</mapper>
+

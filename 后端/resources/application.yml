@@ -1,0 +1,26 @@
+server:
+  port: 8000
+spring:
+  datasource:
+    username: root
+    password: 315015
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///disease
+#    url: jdbc:mysql://8.130.103.12:3306/disease
+mybatis:
+  mapper-locations: mapper/*.xml,mybatis/**/*Dao.xml
+
+  ##显示版本信息
+  #info:
+  #  app:
+  #    name: "@project.name@"  #从pom.xml中获取,pom.xml中需build中加入插件spring-boot-maven-plugin
+  #    description: "@project.description@"
+  #    version: "@project.version@"
+  #    spring-boot-version: "@project.version@"
+  #跨域设置
+#  endpoints:
+#    cors:
+#      allow-credentials: true
+#      allowed-methods: *
+#      allowed-origins: *
+#  spring.boot.admin.monitor.read-timeout

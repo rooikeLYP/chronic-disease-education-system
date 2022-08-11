@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.QuestionnaireDao">
+
+    <resultMap type="com.lyp.demo.entity.Questionnaire" id="QuestionnaireMap">
+        <result property="问卷编号" column="问卷编号" jdbcType="INTEGER"/>
+        <result property="问卷名称" column="问卷名称" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllQ" resultType="com.lyp.demo.entity.Questionnaire">
+        select * from questionnaire;
+    </select>
+
+
+</mapper>
+

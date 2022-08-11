@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.IntroduceDao">
+
+    <resultMap type="com.lyp.demo.entity.Introduce" id="IntroduceMap">
+        <result property="自我介绍编号" column="自我介绍编号" jdbcType="INTEGER"/>
+        <result property="账号" column="账号" jdbcType="VARCHAR"/>
+        <result property="自我介绍" column="自我介绍" jdbcType="VARCHAR"/>
+        <result property="是否默认" column="是否默认" jdbcType="VARCHAR"/>
+        <result property="名称" column="名称" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="selectAllIntroduce" resultType="com.lyp.demo.entity.Introduce">
+        select * from introduce where 账号 = #{id}
+    </select>
+
+    <insert id="addIntroduce">
+        insert into introduce(名称, 账号, 自我介绍, 是否默认) values(#{name}, #{account}, #{introduce}, #{isDefault})
+    </insert>
+
+    <update id="updateIsDefault">
+        update introduce
+        <set>
+            是否默认 = 0
+        </set>
+        <where>
+            是否默认 = 1
+        </where>
+    </update>
+
+    <delete id="deleteIntroduce">
+       delete from introduce where 账号 = #{account}
+    </delete>
+</mapper>
+

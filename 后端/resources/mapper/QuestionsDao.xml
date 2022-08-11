@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.QuestionsDao">
+
+    <resultMap type="com.lyp.demo.entity.Questions" id="QuestionsMap">
+        <result property="问题编号" column="问题编号" jdbcType="INTEGER"/>
+        <result property="问卷编号" column="问卷编号" jdbcType="INTEGER"/>
+        <result property="问题" column="问题" jdbcType="VARCHAR"/>
+        <result property="a" column="A" jdbcType="VARCHAR"/>
+        <result property="b" column="B" jdbcType="VARCHAR"/>
+        <result property="c" column="C" jdbcType="VARCHAR"/>
+        <result property="d" column="D" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllQuestions" resultType="com.lyp.demo.entity.Questions">
+        select * from questions where 问卷编号 = #{qNum} order by 问题编号 asc
+    </select>
+
+
+</mapper>
+

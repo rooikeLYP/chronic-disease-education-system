@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.ClockDao">
+
+    <resultMap type="com.lyp.demo.entity.Clock" id="ClockMap">
+        <result property="打卡编号" column="打卡编号" jdbcType="INTEGER"/>
+        <result property="账号" column="账号" jdbcType="VARCHAR"/>
+        <result property="开始时间" column="开始时间" jdbcType="VARCHAR"/>
+        <result property="结束时间" column="结束时间" jdbcType="VARCHAR"/>
+        <result property="名称" column="名称" jdbcType="VARCHAR"/>
+        <result property="上次打卡时间" column="上次打卡时间" jdbcType="VARCHAR"/>
+        <result property="是否打卡" column="是否打卡" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllClocks" resultType="com.lyp.demo.entity.Clock">
+        select * from clock where 账号 = #{id}
+    </select>
+
+    <insert id="addClock">
+        insert into clock(名称, 账号, 开始时间, 结束时间,是否打卡) values (#{name}, #{id}, #{startTime}, #{endTime}, '0')
+    </insert>
+
+    <update id="updateClock">
+        update clock
+        <set>
+           <if test="lastTime != null and lastTime != ''">
+               上次打卡时间 = #{lastTime},
+           </if>
+           <if test="isClock != null and isClock != ''">
+               是否打卡 = #{isClock}
+           </if>
+        </set>
+        where 打卡编号 = #{num}
+    </update>
+
+    <delete id="deleteClock">
+        delete from clock where 打卡编号 = #{num}
+    </delete>
+</mapper>
+

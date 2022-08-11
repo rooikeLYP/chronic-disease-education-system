@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyp.demo.dao.TelephoneDao">
+
+    <resultMap type="com.lyp.demo.entity.Telephone" id="TelephoneMap">
+        <result property="家属编号" column="家属编号" jdbcType="INTEGER"/>
+        <result property="账号" column="账号" jdbcType="VARCHAR"/>
+        <result property="家属电话" column="家属电话" jdbcType="VARCHAR"/>
+        <result property="是否默认" column="是否默认" jdbcType="VARCHAR"/>
+        <result property="名称" column="名称" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllTelephones" resultType="com.lyp.demo.entity.Telephone">
+        select * from telephone where 账号 = #{id}
+    </select>
+
+    <insert id="addTelephone">
+        insert into telephone(名称, 账号, 家属电话, 是否默认) values(#{name}, #{account}, #{telephone}, #{isDefault})
+    </insert>
+
+    <update id="updateTelephone">
+        update telephone
+        <set>
+            <if test="num != null and num != ''">
+                <if test="telephone != null and telephone != ''">
+                    家属电话 = #{telephone},
+                </if>
+                <if test="name != null and name != ''">
+                    名称 = #{name},
+                </if>
+                <if test="isDefault != null and isDefault != ''">
+                    是否默认 = #{isDefault}
+                </if>
+            </if>
+        </set>
+        where 家属编号 = #{num}
+    </update>
+    <update id="updateIsDefault">
+        update telephone
+        <set>
+            是否默认 = 0
+        </set>
+        where 账号 = #{account}
+    </update>
+
+    <delete id="deleteTelephone">
+        delete from telephone where 家属编号 = #{num}
+    </delete>
+</mapper>
+
